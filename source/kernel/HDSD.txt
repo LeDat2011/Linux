@@ -1,0 +1,76 @@
+HƯỚNG DẪN SỬ DỤNG MODULE TÍNH TOÁN MA TRẬN
+=========================================
+
+LỆNH LINUX CƠ BẢN:
+1. Biên dịch module:
+   make clean       // Xóa các file biên dịch cũ
+   make            // Biên dịch module
+
+2. Kiểm tra và quản lý module:
+   lsmod           // Liệt kê tất cả module đang chạy
+   modinfo matran.ko    // Xem thông tin chi tiết của module
+   sudo dmesg | tail -n 20    // Xem 20 dòng log cuối cùng
+   sudo dmesg -c        // Xóa log kernel
+
+CÁC CHỨC NĂNG MODULE:
+
+1. Tính giai thừa
+   Cú pháp: sudo insmod matran.ko choice=1 d=N
+   Ví dụ: sudo insmod matran.ko choice=1 d=5
+   (Tính 5!)
+
+2. Cộng hai ma trận 3x3
+   Cú pháp: sudo insmod matran.ko choice=2 p=3 q=3 a="ma_tran_1" b="ma_tran_2"
+   Ví dụ: sudo insmod matran.ko choice=2 p=3 q=3 a="1,2,3,4,5,6,7,8,9" b="9,8,7,6,5,4,3,2,1"
+   (Cộng hai ma trận 3x3)
+
+3. Nhân hai ma trận 3x3
+   Cú pháp: sudo insmod matran.ko choice=3 p=3 q=3 s=3 a="ma_tran_1" b="ma_tran_2"
+   Ví dụ: sudo insmod matran.ko choice=3 p=3 q=3 s=3 a="1,2,3,4,5,6,7,8,9" b="9,8,7,6,5,4,3,2,1"
+   (Nhân hai ma trận 3x3)
+
+4. Liệt kê số nguyên tố trong khoảng
+   Cú pháp: sudo insmod matran.ko choice=4 p=start s=end
+   Ví dụ: sudo insmod matran.ko choice=4 p=10 s=20
+   (Liệt kê số nguyên tố từ 10 đến 20)
+
+5. Tìm max, min trong ma trận 3x3
+   Cú pháp: sudo insmod matran.ko choice=5 p=3 q=3 a="ma_tran"
+   Ví dụ: sudo insmod matran.ko choice=5 p=3 q=3 a="1,2,3,4,5,6,7,8,9"
+   (Tìm max, min trong ma trận 3x3)
+
+6. Đếm số chia hết cho N trong ma trận 3x3
+   Cú pháp: sudo insmod matran.ko choice=6 p=3 q=3 a="ma_tran" s=N
+   Ví dụ: sudo insmod matran.ko choice=6 p=3 q=3 a="1,2,3,4,5,6,7,8,9" s=3
+   (Đếm số chia hết cho 3 trong ma trận 3x3)
+
+7. Đếm số nguyên tố trong ma trận 3x3
+   Cú pháp: sudo insmod matran.ko choice=7 p=3 q=3 a="ma_tran"
+   Ví dụ: sudo insmod matran.ko choice=7 p=3 q=3 a="1,2,3,4,5,6,7,8,9"
+   (Đếm số nguyên tố trong ma trận 3x3)
+
+XỬ LÝ LỖI THƯỜNG GẶP:
+
+1. Lỗi "File exists":
+   Giải pháp: sudo rmmod matran
+
+2. Lỗi "Permission denied" khi xem dmesg:
+   Giải pháp: sudo dmesg | tail -n 20
+
+3. Lỗi không thấy kết quả trong dmesg:
+   Giải pháp: 
+   sudo dmesg -c
+   [Chạy lệnh module]
+   sudo dmesg | tail -n 20
+
+QUY TRÌNH SỬ DỤNG:
+1. Gỡ module cũ: sudo rmmod matran
+2. Cài đặt module: sudo insmod matran.ko [tham số]
+3. Xem kết quả: sudo dmesg | tail -n 20
+
+CHÚ Ý:
+- Ma trận 3x3 cần nhập đủ 9 số, cách nhau bởi dấu phẩy
+- Thứ tự nhập: từ trái qua phải, từ trên xuống dưới
+- Không để khoảng trắng trong chuỗi số
+- Luôn gỡ module cũ trước khi cài đặt mới
+

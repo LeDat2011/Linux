@@ -1,0 +1,1 @@
+savedcmd_/home/ledat/FINAL/source/kernel/matran.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/ledat/FINAL/source/kernel/matran.ko /home/ledat/FINAL/source/kernel/matran.o /home/ledat/FINAL/source/kernel/matran.mod.o

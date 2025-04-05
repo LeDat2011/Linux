@@ -1,0 +1,13 @@
+Dịch vụ đồng bộ thời gian hệ thống
+# Vô hiệu hóa dịch vụ
+sudo systemctl stop systemd-timesyncd
+
+# Khởi động lại dịch vụ
+sudo systemctl start systemd-timesyncd
+
+make
+sudo insmod matran.ko
+dmesg | tail
+sudo rmmod matran
+
+make clean
