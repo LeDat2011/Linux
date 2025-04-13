@@ -1,0 +1,1 @@
+savedcmd_/home/ledat/FINAL/source/timer_interrupt/timer_firefox.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/ledat/FINAL/source/timer_interrupt/timer_firefox.ko /home/ledat/FINAL/source/timer_interrupt/timer_firefox.o /home/ledat/FINAL/source/timer_interrupt/timer_firefox.mod.o
