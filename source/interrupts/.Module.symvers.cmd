@@ -1,0 +1,1 @@
+savedcmd_/home/ledat/FINAL/source/interrupts/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/ledat/FINAL/source/interrupts/Module.symvers -T /home/ledat/FINAL/source/interrupts/modules.order -i Module.symvers -e 
